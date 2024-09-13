@@ -1,0 +1,12 @@
+[project]
+name = "splitwise-uploader"
+version = "0.1.0"
+description = "Splitwise API using Streamlit poc"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas>=2.2.2",
+    "python-dotenv",
+    "splitwise>=3.0.0",
+    "streamlit>=1.38.0",
+]
