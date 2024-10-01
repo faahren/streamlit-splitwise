@@ -14,6 +14,8 @@ def main():
 
     except:
         st.write("Splitwise credentials non functional")
+    if st.button("View last expenses"):
+        expenses_popup()
 
 
 def show_file_uploader():
@@ -88,10 +90,17 @@ def show_table():
         st.session_state["df_value"] = edited_df
 
 
-
 def changed():
     edited_df.to_csv('data/' + uploaded_file_name + "_modified")
     st.write("Changed!")
+
+@st.dialog("View last expenses", width="large")
+def expenses_popup():
+    st.write(f"List of expenses")
+    expenses = SplitwiseService().get_latest_expenses()
+    print(expenses[0])
+    df = pd.DataFrame(expenses)
+    st.table(df)
 
 if __name__ == "__main__":
     main()
